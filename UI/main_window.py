@@ -10,6 +10,7 @@ from PyQt6.QtWidgets import (
     QListWidgetItem,
     QHBoxLayout,
     QSizePolicy,
+    QAbstractItemView
 )
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QTextOption
@@ -19,7 +20,7 @@ class MainWindow(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        self.setMinimumSize(1000,700)
+        self.setMinimumSize(1000,1000)
         
         self.setWindowTitle("Angen")
         
@@ -38,7 +39,11 @@ class MainWindow(QWidget):
         self.line_edit.setWordWrapMode(QTextOption.WrapMode.WrapAtWordBoundaryOrAnywhere)
         self.line_edit.setFixedHeight(50)
         self.chat_history = QListWidget()
+        # Smooth scrolling, lets go! As usual, modern problems require 2011 Stackoverflow solutions
+        self.chat_history.setVerticalScrollMode(QListWidget.ScrollMode.ScrollPerPixel)
+        self.chat_history.verticalScrollBar().setSingleStep(20)
         self.chat_history.setWordWrap(True)
+
         send_chat_button = QPushButton('Send', clicked=self.send_message)      
         chat_page = QWidget(tab)
         
@@ -46,13 +51,11 @@ class MainWindow(QWidget):
         chat_page_layout = QGridLayout()
         chat_page.setLayout(chat_page_layout)
         
-        # The scrolling on the chathistory is horrible.
-        # ToDo: Look into better scrolling. Smoother?
         chat_page_layout.addWidget(history_label, 0, 0, 1, 2)
-        chat_page_layout.addWidget(self.chat_history, 1, 0, 2, 2)
-        chat_page_layout.addWidget(chat_label, 3, 0, 1, 2)
-        chat_page_layout.addWidget(self.line_edit, 4, 0, 1, 2)
-        chat_page_layout.addWidget(send_chat_button, 5, 0, 1, 2)
+        chat_page_layout.addWidget(self.chat_history, 1, 0, 4, 2)
+        chat_page_layout.addWidget(chat_label, 5, 0, 1, 2)
+        chat_page_layout.addWidget(self.line_edit, 6, 0, 1, 2)
+        chat_page_layout.addWidget(send_chat_button, 7, 0, 1, 2)
         
         ### Set up data tab ###
         data_page = QWidget(tab)
@@ -103,10 +106,13 @@ class MainWindow(QWidget):
             
         message_widget.setLayout(layout)
         
+        #ToDo: I can't select text. Should probably find a way to fix that.
         message_item = QListWidgetItem(self.chat_history)
         message_item.setSizeHint(message_widget.sizeHint())
         self.chat_history.addItem(message_item)
         self.chat_history.setItemWidget(message_item, message_widget)
+        # Ensure we auto-scroll to the most recent message, cause manual scrolling is for dweebs.
+        self.chat_history.scrollToItem(message_item, hint=QAbstractItemView.ScrollHint.EnsureVisible)
         
     def send_message(self):
         """
@@ -127,7 +133,7 @@ class MainWindow(QWidget):
         """
         Pipe model response to front end.
         """
-        self.add_message("Placeholder", alight_right=False)
+        self.add_message("Placeholder x x x x x x  x x xxx  x xx x x  x x x x   xxx x x x  x x x x  x x xx x x x x x x x x x ", alight_right=False)
         #model_response = self.line_edit.toPlainText().strip()
         
 if __name__ == '__main__':
