@@ -1,2 +1,5 @@
 local_configs.py
 .venv
+capybarahermes-2.5-mistral-7b.Q4_K_M.gguf
+capybarahermes-2.5-mistral-7b.Q5_K_M.gguf
+**/__pycache__
