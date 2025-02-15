@@ -5,3 +5,9 @@
 - Hooked in LLM
 - Chat interface now works with model
     - LLM is told to behave as a "Worldbuilding assistant"
+
+### Release 0.1.0 (MVP Reached)
+- Added ability to point to local context folder
+- Added ability to upload context file
+    - Currently this works best with Markdown. DOCX and PDF have issues
+- LLM now responds contextually based on data that it has been fed
