@@ -23,3 +23,15 @@ I think I did it. Gonna need to add this to the readme for sure. I had to manual
 ### Saturday, February 15th, 2025
 ## 02:46
 Boys, I did it. The computer is talking to me. It is really slow, and limited to only 100 tokens on the response for now, but dammit, it's working. I am wired, and I cant decide between getting some sleep or plowing on and trying to optimise a little. I'm not using my GPU enough, I think. Usage _barely_ reaches 60%. If I can crowd more onto the GPU I might be able to get speedier responses. If I can split to the CPU too, maybe more. I dont mind revvnig both up into the 90's if need be.
+
+## 15:21
+Don't worry, I got some sleep. Now I'm back on to my passion, UI design. I have managed to learn just enough about PyQT to make a UI that is truly and magnificently ugly whilst also being only barely functional. It's done now, the next step is the Context Engine. What is the Context Engine? Glad you asked. Basically the ting that allows us to dynamically load more shit into a vector DB. As a fun consequence of me not wanting to set strict file paths for things I've inadvertantly created the cool feature of multiple context sets. Now for the hard part. Get ChromaDB in here, do some basic handling, and then see if I can get a working context set up. The thing that worries me most is prompt length. The mroe tokens I spit in the worse it will get. I'm getting decent results now, 15-20 second resposne times to generate 1000 (max) tokens. Revs my poor 1070Ti right up to 95, but the old girl handles it like a champ. Seriously, the 4090 and 5090 is cool and all, but they just don't make 'em like they did the 10 series. She's served me well a very long time now, and even when I upgrade I'll make sure she doesn't become e-waste.
+
+## 20:30
+I have done aprehensible things. Things that will surely rob me of sleep. Tomorrow is going to be a big cleanup day, because these files are all a mess. I really need to make them prettier, mke variables more sensible, just organize everything. I might be splitting stuf up into more files to make things more manageable.
+
+## 21:17
+Ok so everything works in the worst way. It's chunking chapter-by-chapter, which is WAY too big. It's also not giving me embeddings, which is just _awesome_. Need to fix that, don't know how. Will later, I need a break.
+
+## 23:49
+MVP ACHIEVED! We did it, and right down to the wire. I wanted to get sucecssful querrying and responses going today, and with 10 minutes to spare, I got it going. It is REALLY clunky, due to my limited processing powers at the moment, but it technically works, andthat is the best kind of working. 
