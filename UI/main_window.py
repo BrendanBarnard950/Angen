@@ -12,13 +12,16 @@ from PyQt6.QtWidgets import (
     QSizePolicy,
     QAbstractItemView
 )
-from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QTextOption
 import sys
+
+from model.model_handler import ModelHandler
 
 class MainWindow(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        
+        self.model_handler = ModelHandler()
         
         self.setMinimumSize(1000,1000)
         
@@ -70,28 +73,29 @@ class MainWindow(QWidget):
         
         self.show()
         
-    def add_message(self, text, alight_right=False):
+    def add_message(self, text, align_right=False):
         """
         Handle adding the message to the chat list
         """
-        # These custom widgets are pretty robust. I want to make this more like a texting UI, so...
-        # ToDo: Texting-like interface, maybe chat bubbles?
+        # These custom widgets are pretty robust.
         message_widget = QWidget()
         
         # I'll be real for now I dont get why I'm using this, I'll replace it or justify it alter
+        # ToDo: Research layouts more in-depth
         layout = QHBoxLayout()
-        
+
         label = QLabel(text)
         label.setWordWrap(True)
         
-        label.setMaximumWidth(900)
+        label.setMaximumWidth(800)
         label.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred) 
         
-        
+        # Doing this makes the text-bubble widget re-size to fit the label instead of stretching
+        # to the max width
         label.adjustSize()
         
         # There is probably a dozen better ways to do this styling, but for now this works
-        if alight_right:
+        if align_right:
             label.setStyleSheet(
             "background-color:rgb(162, 198, 255); border-radius: 5px; padding: 8px; font-size: 18px;"
         )
@@ -118,23 +122,24 @@ class MainWindow(QWidget):
         """
         Send the message to the LLM
         """
-        # Placeholder for now so I can just tinker with stuff, will actually
-        # send amessage in the future
         user_message = self.line_edit.toPlainText().strip()
         if user_message:
-            self.add_message(user_message, alight_right=True)
+            self.add_message(user_message, align_right=True)
             
             self.line_edit.clear()
             
-            # Calling this here temporarily so I can BS a call-and-response.
-            self.handle_model_response()
+            model_response = self.model_handler.promptLLM(prompt=user_message)
+
+            self.handle_model_response(model_response)
         
-    def handle_model_response(self):
+    def handle_model_response(self, model_response):
         """
         Pipe model response to front end.
+        Args:
+            model_response (str): The response the model generated
         """
-        self.add_message("Placeholder x x x x x x  x x xxx  x xx x x  x x x x   xxx x x x  x x x x  x x xx x x x x x x x x x ", alight_right=False)
-        #model_response = self.line_edit.toPlainText().strip()
+        self.add_message(model_response, align_right=False)
+        
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
