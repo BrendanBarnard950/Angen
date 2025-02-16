@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>966</width>
+    <height>1303</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Angen</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tab">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>961</width>
+      <height>1271</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="chat_tab">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <attribute name="title">
+      <string>Chat</string>
+     </attribute>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="4" column="0">
+       <widget class="QLabel" name="message_box_label">
+        <property name="styleSheet">
+         <string notr="true">padding-top:5%;</string>
+        </property>
+        <property name="text">
+         <string>Enter a message:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="chat_tab_context_location_label">
+        <property name="styleSheet">
+         <string notr="true">font-colour:rgb(255, 255, 255)</string>
+        </property>
+        <property name="text">
+         <string>Exsting Context Location: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" rowspan="2">
+       <widget class="QPushButton" name="send_chat_button">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Send</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="Line" name="line_3">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QListWidget" name="chat_history"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QTextEdit" name="chat_box">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="chat_history_label">
+        <property name="text">
+         <string>Chat History:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="chat_tab_db_selection">
+        <property name="text">
+         <string>Select Context</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="Line" name="line_4">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>message_box_label</zorder>
+     <zorder>chat_tab_context_location_label</zorder>
+     <zorder>send_chat_button</zorder>
+     <zorder>line_3</zorder>
+     <zorder>chat_history</zorder>
+     <zorder>chat_history_label</zorder>
+     <zorder>chat_tab_db_selection</zorder>
+     <zorder>line_4</zorder>
+     <zorder>chat_box</zorder>
+    </widget>
+    <widget class="QWidget" name="data_tab">
+     <attribute name="title">
+      <string>Data Ingress</string>
+     </attribute>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="7" column="0">
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="tags_label">
+        <property name="text">
+         <string>Tags (seperated with comma):</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QPushButton" name="added_context_selection_data">
+        <property name="text">
+         <string>Select File</string>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="0">
+       <widget class="Line" name="line_6">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="data_tab_db_selection">
+        <property name="text">
+         <string>Select Folder</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="context_path_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="0">
+       <widget class="QPushButton" name="submit_contex_button">
+        <property name="text">
+         <string>Submit Context</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="db_path_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="17" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="11" column="0">
+       <widget class="Line" name="line_5">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QComboBox" name="catagory_dropdown"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="contect_file_upload_label">
+        <property name="text">
+         <string>File to upload context:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="QLineEdit" name="tags_box"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="context_catagory_label">
+        <property name="text">
+         <string>Catagory of uploaded context:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="data_tab_existing_context_label">
+        <property name="text">
+         <string>Existing Context Location:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="0">
+       <widget class="Line" name="line_7">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
