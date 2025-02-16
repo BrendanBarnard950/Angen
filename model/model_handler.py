@@ -3,7 +3,7 @@ import os
 from llama_cpp import Llama
 
 class ModelHandler():
-    
+    # ============================================================================================================ #
     def __init__(self):
         base_path = os.path.dirname(os.path.abspath(__file__))
         self.model_path = os.path.join(base_path, "capybarahermes-2.5-mistral-7b.Q5_K_M.gguf")
@@ -15,12 +15,17 @@ class ModelHandler():
 
         # I'm playing with fire with these values. Something is going to break, but that's how we learn our limits. 
         self.llm = Llama(model_path=self.model_path, n_ctx=2048, n_gpu_layers=40, n_threads=8, batch_size=1024)
-        
+     
+    # ============================================================================================================ #    
     def promptLLM(self, prompt):
+        """
+        Using more or less the default prompt structure suggested by Mistral. I'll mess with it to see if I can increase
+        response quality later
+        """
         system_message = "You are a worldbuilding assistant"
         processed_prompt = f"<|im_start|>system\n{system_message}<|im_end|>\n" \
                        f"<|im_start|>user\n{prompt}<|im_end|>\n" \
                        f"<|im_start|>assistant\n"
-        output = self.llm(processed_prompt, max_tokens=1000)['choices'][0]['text']
+        output = self.llm(processed_prompt, max_tokens=2000)['choices'][0]['text']
         return output
     
