@@ -1,0 +1,5 @@
+- PDF and DOCX file processing is less than stellar
+- Loading screens dont exist, so we never know if we're hanging or just waiting
+- Any issue will cause the program to crash. I should catch exceptions and pipe them to a message box
+- Weighting algorithm might do the opposite of what I want
+- Not using GitHub tags

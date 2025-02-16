@@ -1,0 +1,8 @@
+- Logging to file and/or to console with useful information
+- Get the Model to shut up in the terminal
+- Create INI file and settings tab so users can configure params based on their specs
+    - Maybe write algo that fetches system specs and gives recommended values?
+- Clean up dependancy list, a few are unused
+- Switchable model, possible API calls?
+- Error handling so crashes dont cause program fail-outs
+- Loading indicators  
