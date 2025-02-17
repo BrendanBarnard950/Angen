@@ -17,26 +17,33 @@ Here are my specs. These are the only specs that are confirmed working. If I tes
 
 ## Installations
 
-For now no excecutable exists. To run Angen clone the repo and run `/UI/main_window.py` with Python 3.12. I HIGHLY recommend you create a virtual environment to run this in. Learn how [here](https://docs.python.org/3/library/venv.html). Now we have a problem. Dependancies.
+For now no excecutable exists. To run Angen clone the repo. I HIGHLY recommend you create a virtual environment to run this in. Learn how [here](https://docs.python.org/3/library/venv.html). Now we have a problem. Dependancies.
 
 ### Dependancies
 
-Angen has a lot of them, and most behave, but there are three that did not. The cuplrits?
+Angen has a lot of them. First, we need the C++ Build Tools (if you have them, do not update to 17.13.0, it has causes the Cuda toolkit to be unable to install), installed through the [Visual Studio installer](https://visualstudio.microsoft.com/downloads/). Instructions [here](https://learn.microsoft.com/en-us/cpp/build/vscpp-step-0-installation?view=msvc-170). Then install the CUDA toolkit, which can be downloaded [here](https://developer.nvidia.com/cuda-toolkit). I used Version 12.8.0. Then, we need to install all the pip dependancies from the requirements document. Do this by running `pip install -r requirements.txt` from inside the Angen folder. Most of our dependencies behave, but there are three that did not. The cuplrits?
 
 - `pyqt6-plugins`
 - `pyqt6-tools`
 
-These two are harmless to leave out. They exist for the UI building side of things, but aren't needed to run Angen. Unfortunately the same can't be said for the last culprit.
+These two are harmless to leave out. They exist for the UI building side of things, but aren't needed to run Angen. They aren't in the requirements doc and you shouldn't worry about them. Unfortunately the same can't be said for the last culprit.
 
 - `llama_cpp_python`
 
 This is the bane of my existance. So, here's what you do. Download the dependancy [here, from the official GitHub repo](https://github.com/abetlen/llama-cpp-python/releases), and install it from file. Installing it from remote never worked for me.
+
+
 
 ### Model
 
 The model is pretty big, so I left it from the repo. Download it [here](https://huggingface.co/TheBloke/CapybaraHermes-2.5-Mistral-7B-GGUF/blob/main/capybarahermes-2.5-mistral-7b.Q5_K_M.gguf) and place it into the `/model/` folder of the repo. Make sure the model's filename is `capybarahermes-2.5-mistral-7b.Q5_K_M.gguf`.
 
 ## Using Angen
+
+### Launching Angen
+1. Open your terminal of choice
+2. Activate your virtual environment
+3. Run `python -m UI.main_window` from inside the Angen folder
 
 ### Loading your own context
 
@@ -51,4 +58,4 @@ The model is pretty big, so I left it from the repo. Download it [here](https://
 
 1. Click on the 'Chat' tab.
 2. Enter your question in the bottom text box. For now, try to keep questions under 100 words.
-3. Wait. I haven't added loading indicators yet. The program might say "not responding", but it is still working. Responses usually take betwee 5 and 20 seconds on my hardware.
+3. Wait. I haven't added loading indicators yet. The program might say "not responding", but it is still working. Responses usually take between 5 and 20 seconds on my hardware.
